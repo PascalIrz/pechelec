@@ -4,10 +4,10 @@
 \alias{g_cor}
 \title{Graphique de matrice de corrélation}
 \usage{
-g_cor(df, order = c("original", "hclust"))
+g_cor(df, order = "original")
 }
 \arguments{
-\item{df}{Dataframe contenant les données.}
+\item{df}{Dataframe contenant uniquement les variables à corréler.}
 
 \item{order}{Caractère. Ordre des variables sur le graphique qui est soit celui
 du dataframe ("original") soit fonction des proximités en CAH ("hclust").}

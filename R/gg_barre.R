@@ -3,7 +3,7 @@
 #'
 #' @param df Nom du dataframe contenant les données.
 #' @param var Caractère. Nom de la variable qualitative à représenter.
-#' @param xlab Caractère. Etiquette de l'axe des x.
+#' @param x_lab Caractère. Etiquette de l'axe des x.
 #' @param type Caractère. Type de dataframe, soit "pêches", soit "stations".
 #' @param couleur Caractère. Couleur de remplissage des barres.
 #'
@@ -11,20 +11,25 @@
 #' @export
 #'
 #' @examples
-gg_distri_var_qual <- function(df,
-                               var,
-                               xlab,
-                               type = "stations",
-                               couleur = "#D95F02") {
+gg_barre <- function(df,
+                     var,
+                     x_lab,
+                     type = "stations",
+                     couleur = "#D95F02")
+
+  {
 
   if (type == "stations") {
     df <- df %>%
       select(station, var) %>%
-      unique()}
+      unique()
+  }
 
-  if (type == "stations") {ylab <- "Nb de stations"
+  if (type == "stations") {
+    y_lab <- "Nb de stations"
   } else {
-    ylab <- "Nb de pêches"}
+    y_lab <- "Nb de pêches"
+  }
 
   df %>%
     pull(get(var)) %>%
@@ -35,8 +40,8 @@ gg_distri_var_qual <- function(df,
                y = n_obs)) +
     geom_bar(stat = 'Identity',
              fill = '#7570B3') +
-    labs(x = xlab,
-         y = ylab) +
+    labs(x = x_lab,
+         y = y_lab) +
     theme(text = element_text(size = 20))
 
 }
