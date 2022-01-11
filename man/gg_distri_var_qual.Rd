@@ -4,18 +4,12 @@
 \alias{gg_distri_var_qual}
 \title{Graphique de distribution d'une variable qualitative}
 \usage{
-gg_distri_var_qual(
-  df,
-  var_qual,
-  xlab,
-  type = c("stations", "pêches"),
-  couleur = "#D95F02"
-)
+gg_distri_var_qual(df, var, xlab, type = "stations", couleur = "#D95F02")
 }
 \arguments{
 \item{df}{Nom du dataframe contenant les données.}
 
-\item{var_qual}{Caractère. Nom de la variable à représenter.}
+\item{var}{Caractère. Nom de la variable qualitative à représenter.}
 
 \item{xlab}{Caractère. Etiquette de l'axe des x.}
 

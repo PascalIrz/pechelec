@@ -4,18 +4,12 @@
 \alias{gg_distri_var_quant}
 \title{Produire l'histogramme d'une des variables du jdd}
 \usage{
-gg_distri_var_quant(
-  df,
-  var_quant,
-  xlab,
-  type = c("pêches", "stations"),
-  couleur = "#D95F02"
-)
+gg_distri_var_quant(df, var, xlab, type = "stations", couleur = "#D95F02")
 }
 \arguments{
 \item{df}{Caractère. Nom du dataframe contenant les données.}
 
-\item{var_quant}{Caractère. Nom de la variable à représenter.}
+\item{var}{Caractère. Nom de la variable à représenter.}
 
 \item{xlab}{Caractère. Etiquette de l'axe des x.}
 
