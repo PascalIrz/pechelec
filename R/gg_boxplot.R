@@ -1,6 +1,6 @@
-#' Produire un boxplot sur les stations ou les observartions
+#' Produire un boxplot sur les stations ou les observations
 #'
-#' @param df Caractère. Nom du dataframe contenant les données.
+#' @param df Dataframe contenant les données.
 #' @param var_quant Caractère. Nom de la variable quantitative à représenter (ordonnée).
 #' @param var_quant_lab Caractère. Etiquette de l'axe des y.
 #' @param var_qual Caractère. Nom de la variable qualitative à représenter (abscisse).

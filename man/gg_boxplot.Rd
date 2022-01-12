@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_boxplot.R
 \name{gg_boxplot}
 \alias{gg_boxplot}
-\title{Produire un boxplot sur les stations ou les observartions}
+\title{Produire un boxplot sur les stations ou les observations}
 \usage{
 gg_boxplot(
   df,
@@ -14,7 +14,7 @@ gg_boxplot(
 )
 }
 \arguments{
-\item{df}{Caractère. Nom du dataframe contenant les données.}
+\item{df}{Dataframe contenant les données.}
 
 \item{var_quant}{Caractère. Nom de la variable quantitative à représenter (ordonnée).}
 
@@ -30,5 +30,5 @@ gg_boxplot(
 Un boxplot ggplot2.
 }
 \description{
-Produire un boxplot sur les stations ou les observartions
+Produire un boxplot sur les stations ou les observations
 }
