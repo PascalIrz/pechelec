@@ -1,7 +1,7 @@
 #' Produire l'histogramme d'une des variables du jdd
 #'
-#' @param df Caractère. Nom du dataframe contenant les données.
-#' @param var Caractère. Nom de la variable à représenter.
+#' @param df Nom du dataframe contenant les données.
+#' @param var Nom de la variable à représenter.
 #' @param x_lab Caractère. Etiquette de l'axe des x.
 #' @param type Caractère. Type de dataframe, soit "pêches", soit "stations".
 #' @param couleur Caractère. Couleur de remplissage des barres de l'histogramme.
@@ -19,9 +19,12 @@ gg_histo <- function(df,
                      type = "stations",
                      couleur = "#D95F02")
 {
+
+  var <- enquo(var)
+
   if (type == "stations") {
     df <- df %>%
-      select(station, var) %>%
+      select(station, !!var) %>%
       unique()
   }
 
@@ -32,11 +35,11 @@ gg_histo <- function(df,
   }
 
   moy <- df %>%
-    pull(var) %>%
+    pull(!!var) %>%
     mean(na.rm = TRUE)
 
   range <- df %>%
-    pull(var) %>%
+    pull(!!var) %>%
     range(na.rm = TRUE)
 
   amp <- range[2] - range [1]
@@ -45,7 +48,7 @@ gg_histo <- function(df,
                  round(moy, digits = 2))
 
   ggplot(data = df,
-         aes(x = get(var))) +
+         aes(x = !!var)) +
     geom_histogram(bins = 10,
                    fill = couleur) +
     labs(x = paste0(x_lab, " - ", label),

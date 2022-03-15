@@ -7,9 +7,9 @@
 gg_histo(df, var, x_lab, type = "stations", couleur = "#D95F02")
 }
 \arguments{
-\item{df}{Caractère. Nom du dataframe contenant les données.}
+\item{df}{Nom du dataframe contenant les données.}
 
-\item{var}{Caractère. Nom de la variable à représenter.}
+\item{var}{Nom de la variable à représenter.}
 
 \item{x_lab}{Caractère. Etiquette de l'axe des x.}
 

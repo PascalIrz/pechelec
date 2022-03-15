@@ -10,7 +10,13 @@
 #' @return Un diagramme ggplot2.
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' gg_barre(
+#'   df = data,
+#'   var = protocole,
+#'   x_lab = "Type de protocole"
+#' )
+#' }
 gg_barre <- function(df,
                      var,
                      x_lab,
@@ -19,9 +25,11 @@ gg_barre <- function(df,
 
   {
 
+  var <- enquo(var)
+
   if (type == "stations") {
     df <- df %>%
-      select(station, var) %>%
+      select(station, !!var) %>%
       unique()
   }
 
@@ -32,12 +40,12 @@ gg_barre <- function(df,
   }
 
   df %>%
-    pull(get(var)) %>%
-    table() %>%
-    as.data.frame() %>%
-    magrittr::set_colnames(c(var, "n_obs")) %>%
-    ggplot(aes(x = as.factor(get(var)),
-               y = n_obs)) +
+    count(!!var) %>%
+    # table() %>%
+    # as.data.frame() %>%
+    # magrittr::set_colnames(c(var, "n_obs")) %>%
+    ggplot(aes(x = as.factor(!!var),
+               y = n)) +
     geom_bar(stat = 'Identity',
              fill = '#7570B3') +
     labs(x = x_lab,

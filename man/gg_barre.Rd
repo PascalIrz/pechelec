@@ -23,3 +23,12 @@ Un diagramme ggplot2.
 \description{
 Graphique de distribution d'une variable qualitative
 }
+\examples{
+\dontrun{
+gg_barre(
+  df = data,
+  var = protocole,
+  x_lab = "Type de protocole"
+)
+}
+}
