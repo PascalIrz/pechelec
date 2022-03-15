@@ -3,6 +3,7 @@
 #' @param df Dataframe contenant les données.
 #' @param x Caractère. Nom de la variable à représenter en abscisse.
 #' @param y Caractère. Nom de la variable à représenter en ordonnée
+#' @param y_lab Caractère. Etiquette de l'axe des ordonnées.
 #'
 #' @return Le graphique ggplot2.
 #' @export
@@ -12,8 +13,13 @@
 #' @importFrom ggplot2 annotate scale_color_manual
 #' @importFrom scales number_format
 #'
-#' @examples
-gg_bivar_cran <- function(df, x, y)
+#' @examples \dontrun{
+#' gg_bivar_cran(df = prov,
+#' x = "conductivite",
+#' y = "intensite",
+#' y_lab = "Intensité (A)")
+#' }
+gg_bivar_cran <- function(df, x, y, y_lab)
 
 {
   # Equations mises en forme
@@ -36,11 +42,11 @@ gg_bivar_cran <- function(df, x, y)
     geom_smooth(method = 'lm',
                 se = FALSE) +
     labs(x = "Conductivité (\U00B5S/cm)",
-         y = "Intensité (A)",
+         y = y_lab,
          col = "Cran") +
     scale_y_continuous(labels = number_format(accuracy = 1)) +
     theme(text = element_text(size = 15)) +
-    annotate(
+    annotate(                 # positionnement des équations en relatif
       geom = "text",
       x = -Inf,
       y = Inf,

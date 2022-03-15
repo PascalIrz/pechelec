@@ -12,7 +12,7 @@ mef_ordonner_vars(df, ordre)
 \item{ordre}{Vecteur entier servant à réordonner les colonnes.}
 }
 \value{
-Le dataframe avec les colonnes réordonnées.
+Le dataframe avec les colonnes sélectionnées réordonnées.
 }
 \description{
 # fonction de mise en forme du df

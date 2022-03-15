@@ -39,12 +39,15 @@ gg_comp_moy <- function(df,
     geom_pointrange(aes(ymin = ymin, ymax = ymax),
                     colour = "black") +
     geom_hline(
-      yintercept = data_2ans %>% pull(get(var)) %>%  mean(na.rm = T),
+      yintercept = df %>%
+        pull(get(var)) %>%
+        mean(na.rm = T),
       linetype = "longdash",
       size = 0.7,
       col = "limegreen"
     ) +
-    theme(legend.position = "none", text = element_text(size = 20)) +
+    theme(legend.position = "none",
+          text = element_text(size = 20)) +
     labs(title = "Moyenne annuelle",
          x = "",
          y = y_lab)

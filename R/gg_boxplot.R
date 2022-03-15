@@ -9,10 +9,18 @@
 #'
 #' @return Un boxplot ggplot2.
 #' @export
-#' @importFrom dplyr filter
+#' @importFrom dplyr filter pull
 #' @importFrom ggplot2 ggplot geom_boxplot labs aes theme element_text
 #'
-#' @examples
+#' @examples \dontrun{
+#' gg_boxplot(
+#'   df = data,
+#'   var_quant = "voltage",
+#'   var_quant_lab = "Voltage (V)",
+#'   var_qual = "cran",
+#'   var_qual_lab = "Cran de réglage du Héron"
+#' )
+#' }
 gg_boxplot <- function(df,
                        var_quant,
                        var_quant_lab,
@@ -21,14 +29,23 @@ gg_boxplot <- function(df,
                        couleur = "#7570B3")
 {
 
-  df %>%
+  df <- df %>%
     filter(!is.na(get(var_quant)) &
-             !is.na(get(var_qual))) %>%
-    ggplot(aes(x = as.factor(get(var_qual)),
-               y = get(var_quant))) +
-    geom_boxplot(fill = couleur) +
+           !is.na(get(var_qual)))
+
+  quantiles <- df %>%
+    pull(var_quant) %>%
+    quantile(probs = c(0.1, 0.9))
+
+  ggplot(data = df,
+         aes(x = as.factor(get(var_qual)),
+             y = get(var_quant))) +
+    geom_boxplot(fill = couleur#,
+               #  outlier.shape = NA
+                 ) +
     labs(x = var_qual_lab,
          y = var_quant_lab) +
-    theme(text = element_text(size = 20))
+    theme(text = element_text(size = 20)) #+
+   # scale_y_continuous(limits = quantiles)
 
 }

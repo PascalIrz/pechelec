@@ -32,3 +32,14 @@ Un boxplot ggplot2.
 \description{
 Produire un boxplot sur les stations ou les observations
 }
+\examples{
+\dontrun{
+gg_boxplot(
+  df = data,
+  var_quant = "voltage",
+  var_quant_lab = "Voltage (V)",
+  var_qual = "cran",
+  var_qual_lab = "Cran de réglage du Héron"
+)
+}
+}
