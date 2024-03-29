@@ -9,7 +9,7 @@
 #'
 #' @importFrom corrplot corrplot.mixed
 #' @importFrom Hmisc rcorr
-#' @importFrom tidyr replace_na
+#' @importFrom misty na.as
 #'
 #' @examples
 g_cor <- function(df, order = "original") {
@@ -21,7 +21,7 @@ g_cor <- function(df, order = "original") {
   corrplot.mixed(
     corr = M$r,
     p.mat = M$P %>%
-      replace_na(replace = 1),
+      misty::na.as(na = 1),
     sig.level = .05,
     upper = "ellipse",
     tl.cex = 0.8,

@@ -22,11 +22,11 @@
 #' )
 #' }
 gg_boxplot <- function(df,
-                        var_quant,
-                        var_quant_lab,
-                        var_qual,
-                        var_qual_lab,
-                        couleur = "#7570B3")
+                       var_quant,
+                       var_quant_lab,
+                       var_qual,
+                       var_qual_lab,
+                       couleur = "#7570B3")
 {
   var_quant <- enquo(var_quant)
   var_qual <- enquo(var_qual)
@@ -42,9 +42,7 @@ gg_boxplot <- function(df,
   ggplot(data = df,
          aes(x = as.factor(!!var_qual),
              y = !!var_quant)) +
-    geom_boxplot(fill = couleur#,
-                 #  outlier.shape = NA
-    ) +
+    geom_boxplot(fill = couleur) +
     labs(x = var_qual_lab,
          y = var_quant_lab) +
     theme(text = element_text(size = 20)) #+

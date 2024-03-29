@@ -16,6 +16,7 @@ mef_ordonner_vars <- function(df, ordre) {
            volt,
            puiss,
            intens,
-           pen15c) %>%
+           pen15c,
+           dc) %>%
     select(all_of(ordre))
 }
